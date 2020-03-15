@@ -9,16 +9,27 @@ namespace ClientApp.Network.ServerSide
 {
     public class Server : MonoBehaviour
     {
-        public int MaxPlayers { get; private set; }
-        public string IpAddress { get; private set; }
-        public int Port { get; private set; }
-        private TcpListener tcpListener;
-        private SortedList<int, ClientManager> Clients = new SortedList<int, ClientManager>();
+        /****************PROPERTIES****************/
+        #region PROPERTIES
+        private static object locker = new object();
+        public static int MaxPlayers { get; private set; }
+        public static string IpAddress { get; private set; }
+        public static int Port { get; private set; }
+        private static TcpListener tcpListener;
+        private static SortedList<int, ClientObject> Clients = new SortedList<int, ClientObject>();
 
-        private bool ServerIsUp = false;
+        public static bool ServerIsUp
+        {
+            get { return serverIsUp; }
+            private set { lock(locker) { serverIsUp = value; }}
+        }
+        private static bool serverIsUp = false;
+        #endregion
+        /******************************************/
 
-        
-        public async void StartServer(int maxPlayers, string ip, int port)
+
+
+        public static async void StartServer(int maxPlayers, string ip, int port)
         {
             MaxPlayers = maxPlayers;
             IpAddress = ip;
@@ -43,14 +54,45 @@ namespace ClientApp.Network.ServerSide
         }
 
 
+        private void SendTCPData(int clientId, Package pckg)
+        {
+            pckg.WriteRange();
+            Clients[clientId].SendData(pckg);
+        }
 
-        private void HandleClient(TcpClient client)
+        private void SendTCPDataToAll(Package pckg)
+        {
+            pckg.WriteRange();
+            for(int i = 1; i < MaxPlayers; i++)
+            {
+                if (Clients[i].IsActive)
+                {
+                    Clients[i].SendData(pckg);
+                }
+            }
+        }
+
+        private static void SendTCPDataToAll(int exceptId, Package pckg)
+        {
+            pckg.WriteRange();
+            for (int i = 1; i < MaxPlayers; i++)
+            {
+                if (Clients[i].IsActive && i != exceptId)
+                {
+                    Clients[i].SendData(pckg);
+                }
+            }
+        }
+
+
+
+        private static void HandleClient(TcpClient client)
         {
             Debug.Log($"Handling connection from {client.Client.RemoteEndPoint}");
 
             for (int i = 1; i <= MaxPlayers; i++)
             {
-                if (Clients[i].tcpClient == null)
+                if (!Clients[i].IsActive)
                 {
                     Clients[i].Connect(client);
                     return;
@@ -61,11 +103,11 @@ namespace ClientApp.Network.ServerSide
 
 
 
-        private void InitializeServerData()
+        private static void InitializeServerData()
         {
             for (int i = 1; i <= MaxPlayers; i++)
             {
-                Clients.Add(i, new ClientManager(i));
+                Clients.Add(i, new ClientObject(i));
             }
         }
     }

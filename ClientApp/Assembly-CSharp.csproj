@@ -46,10 +46,10 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Network\ClientSide\Client.cs" />
-     <Compile Include="Assets\Network\ClientSide\TCPManager.cs" />
+     <Compile Include="Assets\Network\ClientSide\TwoWayBuffer.cs" />
      <Compile Include="Assets\Network\ClientSide\UIManager.cs" />
      <Compile Include="Assets\Network\Package.cs" />
-     <Compile Include="Assets\Network\ServerSide\ClientManager.cs" />
+     <Compile Include="Assets\Network\ServerSide\ClientObject.cs" />
      <Compile Include="Assets\Network\ServerSide\Server.cs" />
      <Compile Include="Assets\NewBehaviourScript.cs" />
      <Compile Include="Assets\ServerScr.cs" />
