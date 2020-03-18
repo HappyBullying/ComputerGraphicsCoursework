@@ -25,10 +25,5 @@ public class NewBehaviourScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetKeyDown("w"))
-            client.tcp.msgs.Enqueue("w");
-
-        if (Input.GetKeyDown("space"))
-            client.tcp.msgs.Enqueue("space");
     }
 }

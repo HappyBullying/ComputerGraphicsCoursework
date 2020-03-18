@@ -4,6 +4,7 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 using ClientApp.Network;
+using System.Collections.Generic;
 
 namespace ClientApp.Network.ServerSide
 {
@@ -14,9 +15,16 @@ namespace ClientApp.Network.ServerSide
         public int ClientId { get; private set; }
         public string Username { get; private set; }
         public int DataBufferSize = 8192;
-        public bool IsActive { get; private set;}
+        public bool IsActive 
+        {
+            get { return isActive; }
+            set { isActive = value; }
+        }
+        private bool isActive = false;
+        public ulong LastHandledPackageId { get; private set; } = 0;
         private TcpClient tcpClient;
         private NetworkStream nstream;
+        private Queue<Package> toSend = new Queue<Package>();
         private byte[] receiveBuffer;
         #endregion
         /******************************************/
@@ -52,7 +60,7 @@ namespace ClientApp.Network.ServerSide
 
         public async void Connect(TcpClient _client)
         {
-            IsActive = true;
+            isActive = true;
             tcpClient = _client;
             tcpClient.ReceiveBufferSize = DataBufferSize;
             tcpClient.SendBufferSize = DataBufferSize;
@@ -62,9 +70,9 @@ namespace ClientApp.Network.ServerSide
             
             try
             {
-                while(nstream.CanRead)
+                while(isActive)
                 {
-                    if (nstream.DataAvailable)
+                    if (nstream.CanRead && nstream.DataAvailable)
                     {
                         int bytesReceived = await nstream.ReadAsync(receiveBuffer, 0, receiveBuffer.Length);
                         byte[] data = new byte[bytesReceived];
@@ -72,6 +80,11 @@ namespace ClientApp.Network.ServerSide
                         
                         string text = System.Text.Encoding.UTF8.GetString(data, 0, bytesReceived);
                         Debug.Log(text);
+                    }
+
+                    if (nstream.CanWrite)
+                    {
+                        // send
                     }
                 }
             }
@@ -81,7 +94,7 @@ namespace ClientApp.Network.ServerSide
             }
             finally
             {
-                IsActive = false;
+                isActive = false;
                 nstream.Close();
                 _client.Close();
                 _client = null;

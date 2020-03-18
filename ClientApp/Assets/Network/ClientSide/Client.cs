@@ -83,18 +83,20 @@ namespace ClientApp.Network.ClientSide
                 client.Connect(IpAddress, Port);
                 
                 nstream = client.GetStream();
-                while(ClientOnline && nstream.CanWrite)
+                while(ClientOnline)
                 {
-                    if (nstream.DataAvailable)
+                    if (nstream.CanRead && nstream.DataAvailable)
                     {
-                        // Read Input Data
+                        // Read Incoming Data
                         receiveBuffer = new byte[DataBufferSize];
                         int bytesRead = nstream.Read(receiveBuffer, 0, receiveBuffer.Length);
                         byte[] data = new byte[bytesRead];
                         Array.Copy(receiveBuffer, data, bytesRead);
                         receivedPackage.Reset(HandleData(data));
+                    }
 
-
+                    if (nstream.CanWrite)
+                    {
                         // Send to server
                         Package[] packages = TwoWayBuffer.GetAllFromSendSequence();
                         for (int i = 0; i < packages.Length; i++)
