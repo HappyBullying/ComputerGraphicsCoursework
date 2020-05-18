@@ -2,8 +2,6 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
-    <CscToolPath>G:\Programs\Unity\Editors\2019.3.0f6\Editor\Data\Tools\RoslynScripts</CscToolPath>
-    <CscToolExe>unity_csc.bat</CscToolExe>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -11,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{5A1ACC53-9169-3AF4-8F9A-1AEC2C9A47CA}</ProjectGuid>
+    <ProjectGuid>{53cc1a5a-6991-f43a-8f9a-1aec2c9a47ca}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
@@ -46,14 +44,6 @@
     <ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="UnityEngine">
-      <HintPath>G:\Programs\Unity\Editors\2019.3.0f6\Editor\Data\Managed/UnityEngine/UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor">
-      <HintPath>G:\Programs\Unity\Editors\2019.3.0f6\Editor\Data\Managed/UnityEditor.dll</HintPath>
-    </Reference>
-  </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs" />
      <Compile Include="Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\HeadBob.cs" />
@@ -103,32 +93,8 @@
      <None Include="Assets\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
      <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
      <None Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
- <Reference Include="Unity.Timeline.Editor">
- <HintPath>G:/GitRepos/ComputerGraphicsCoursework/ClientApp/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.VSCode.Editor">
- <HintPath>G:/GitRepos/ComputerGraphicsCoursework/ClientApp/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>G:/GitRepos/ComputerGraphicsCoursework/ClientApp/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.UI">
- <HintPath>G:/GitRepos/ComputerGraphicsCoursework/ClientApp/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Timeline">
- <HintPath>G:/GitRepos/ComputerGraphicsCoursework/ClientApp/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
- </Reference>
- <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>G:/GitRepos/ComputerGraphicsCoursework/ClientApp/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Rider.Editor">
- <HintPath>G:/GitRepos/ComputerGraphicsCoursework/ClientApp/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.TextMeshPro">
- <HintPath>G:/GitRepos/ComputerGraphicsCoursework/ClientApp/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.UI">
- <HintPath>G:/GitRepos/ComputerGraphicsCoursework/ClientApp/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <Reference Include="UnityEngine">
+ <HintPath>G:/Programs/Unity/Editors/2019.3.0f6/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>G:/Programs/Unity/Editors/2019.3.0f6/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -307,6 +273,9 @@
  <Reference Include="UnityEngine.XRModule">
  <HintPath>G:/Programs/Unity/Editors/2019.3.0f6/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
  </Reference>
+ <Reference Include="UnityEditor">
+ <HintPath>G:/Programs/Unity/Editors/2019.3.0f6/Editor/Data/Managed/UnityEditor.dll</HintPath>
+ </Reference>
  <Reference Include="Mono.CecilX">
  <HintPath>G:/GitRepos/ComputerGraphicsCoursework/ClientApp/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
  </Reference>
@@ -324,6 +293,9 @@
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>G:/Programs/Unity/Editors/2019.3.0f6/Editor/Data/PlaybackEngines/AppleTVSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+ <HintPath>G:/Programs/Unity/Editors/2019.3.0f6/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Common">
  <HintPath>G:/Programs/Unity/Editors/2019.3.0f6/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Common.dll</HintPath>
@@ -675,37 +647,73 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Unity.Timeline.Editor.csproj">
+      <Project>{75a10ca5-e383-3a17-5237-eabc5aa59e0f}</Project>
+      <Name>Unity.Timeline.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Mirror.Weaver.csproj">
-      <Project>{E7F9ADC4-4F34-1134-7E6A-CE09947A9AAA}</Project>
+      <Project>{c4adf9e7-344f-3411-7e6a-ce09947a9aaa}</Project>
       <Name>Mirror.Weaver</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.VSCode.Editor.csproj">
+      <Project>{452b24f0-b309-948c-4c60-aa35a18384b5}</Project>
+      <Name>Unity.VSCode.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Mirror.Authenticators.csproj">
-      <Project>{F48A1913-B986-ACA4-A2FC-748D0C33CFC0}</Project>
+      <Project>{13198af4-86b9-a4ac-a2fc-748d0c33cfc0}</Project>
       <Name>Mirror.Authenticators</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.Components.csproj">
-      <Project>{E58697C2-B3BB-F02B-DCF7-A4AD18D94056}</Project>
+      <Project>{c29786e5-bbb3-2bf0-dcf7-a4ad18d94056}</Project>
       <Name>Mirror.Components</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.CompilerSymbols.csproj">
-      <Project>{5BA92832-62BE-09C7-2583-07188A99C727}</Project>
+      <Project>{3228a95b-be62-c709-2583-07188a99c727}</Project>
       <Name>Mirror.CompilerSymbols</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.TextMeshPro.Editor.csproj">
+      <Project>{c9180057-910e-76b8-cafc-03095faa8c06}</Project>
+      <Name>Unity.TextMeshPro.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Ninja.WebSockets.csproj">
-      <Project>{520013A7-7182-417C-09B6-C098A80CAC3A}</Project>
+      <Project>{a7130052-8271-7c41-09b6-c098a80cac3a}</Project>
       <Name>Ninja.WebSockets</Name>
     </ProjectReference>
+    <ProjectReference Include="UnityEngine.UI.csproj">
+      <Project>{021918df-6724-cef6-b75a-9497e817028e}</Project>
+      <Name>UnityEngine.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Timeline.csproj">
+      <Project>{b9424800-8023-c045-5a76-ab47e0a72296}</Project>
+      <Name>Unity.Timeline</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.CollabProxy.Editor.csproj">
+      <Project>{84794a90-2682-908e-26fa-eb3bd6dec8e1}</Project>
+      <Name>Unity.CollabProxy.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Rider.Editor.csproj">
+      <Project>{341cac19-fe6c-328a-4f69-c73903e74e34}</Project>
+      <Name>Unity.Rider.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Mirror.csproj">
-      <Project>{F52E1A62-8D83-DEFD-95DF-0FB8F59E0AC0}</Project>
+      <Project>{621a2ef5-838d-fdde-95df-0fb8f59e0ac0}</Project>
       <Name>Mirror</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.Editor.csproj">
-      <Project>{C8DF662B-BC59-28E5-FBF9-119F6F4A464F}</Project>
+      <Project>{2b66dfc8-59bc-e528-fbf9-119f6f4a464f}</Project>
       <Name>Mirror.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.TextMeshPro.csproj">
+      <Project>{b2c4d1f9-b662-6c4a-052c-0f876ec811b3}</Project>
+      <Name>Unity.TextMeshPro</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEditor.UI.csproj">
+      <Project>{43200c67-4849-806c-0ffd-014346aed598}</Project>
+      <Name>UnityEditor.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

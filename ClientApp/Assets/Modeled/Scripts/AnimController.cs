@@ -1,42 +1,31 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
-
+using Mirror;
 public class AnimController : MonoBehaviour, IActionAble
 {
-    public Animation animation;
+    public Animation _animation;
     private AnimationClip[] Clips;
     private bool isDefaultState = true;
-
     private void Awake()
     {
-        Clips = new AnimationClip[animation.GetClipCount()];
+        Clips = new AnimationClip[_animation.GetClipCount()];
         int i = 0;
-        foreach(AnimationState a_s in animation)
+        foreach(AnimationState a_s in _animation)
         {
             Clips[i] = a_s.clip;
             i++;
         }
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            DoAction();
-        }
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            UnDoAction();
-        }
-    }
 
+    // Unterface methods
+    /***************************************************/
     public void DoAction()
     {
         if (!isDefaultState)
             return;
         isDefaultState = false;
-        animation.clip = Clips[0];
-        animation.Play();
+        _animation.clip = Clips[0];
+        _animation.Play();
     }
 
     public void UnDoAction()
@@ -44,12 +33,13 @@ public class AnimController : MonoBehaviour, IActionAble
         if (isDefaultState)
             return;
         isDefaultState = true;
-        animation.clip = Clips[1];
-        animation.Play();
+        _animation.clip = Clips[1];
+        _animation.Play();
     }
 
     public bool IsDefaultState()
     {
         return isDefaultState;
     }
+    /***************************************************/
 }

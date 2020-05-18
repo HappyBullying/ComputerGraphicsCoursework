@@ -2,8 +2,6 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
-    <CscToolPath>G:\Programs\Unity\Editors\2019.3.0f6\Editor\Data\Tools\RoslynScripts</CscToolPath>
-    <CscToolExe>unity_csc.bat</CscToolExe>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -11,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{F52E1A62-8D83-DEFD-95DF-0FB8F59E0AC0}</ProjectGuid>
+    <ProjectGuid>{621a2ef5-838d-fdde-95df-0fb8f59e0ac0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Mirror</AssemblyName>
@@ -46,14 +44,6 @@
     <ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="UnityEngine">
-      <HintPath>G:\Programs\Unity\Editors\2019.3.0f6\Editor\Data\Managed/UnityEngine/UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor">
-      <HintPath>G:\Programs\Unity\Editors\2019.3.0f6\Editor\Data\Managed/UnityEditor.dll</HintPath>
-    </Reference>
-  </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Mirror\Runtime\AssemblyInfo.cs" />
      <Compile Include="Assets\Mirror\Runtime\ClientScene.cs" />
@@ -110,11 +100,8 @@
      <Compile Include="Assets\Mirror\Runtime\Transport\Websocket\WebsocketTransport.cs" />
      <Compile Include="Assets\Mirror\Runtime\UNetwork.cs" />
      <None Include="Assets\Mirror\Runtime\Mirror.asmdef" />
- <Reference Include="UnityEditor.UI">
- <HintPath>G:/GitRepos/ComputerGraphicsCoursework/ClientApp/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.UI">
- <HintPath>G:/GitRepos/ComputerGraphicsCoursework/ClientApp/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <Reference Include="UnityEngine">
+ <HintPath>G:/Programs/Unity/Editors/2019.3.0f6/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>G:/Programs/Unity/Editors/2019.3.0f6/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -293,6 +280,9 @@
  <Reference Include="UnityEngine.XRModule">
  <HintPath>G:/Programs/Unity/Editors/2019.3.0f6/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
  </Reference>
+ <Reference Include="UnityEditor">
+ <HintPath>G:/Programs/Unity/Editors/2019.3.0f6/Editor/Data/Managed/UnityEditor.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEditor.VR">
  <HintPath>G:/Programs/Unity/Editors/2019.3.0f6/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll</HintPath>
  </Reference>
@@ -340,6 +330,9 @@
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>G:/Programs/Unity/Editors/2019.3.0f6/Editor/Data/PlaybackEngines/AppleTVSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+ <HintPath>G:/Programs/Unity/Editors/2019.3.0f6/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Common">
  <HintPath>G:/Programs/Unity/Editors/2019.3.0f6/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Common.dll</HintPath>
@@ -692,16 +685,24 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Mirror.CompilerSymbols.csproj">
-      <Project>{5BA92832-62BE-09C7-2583-07188A99C727}</Project>
+      <Project>{3228a95b-be62-c709-2583-07188a99c727}</Project>
       <Name>Mirror.CompilerSymbols</Name>
     </ProjectReference>
     <ProjectReference Include="Ninja.WebSockets.csproj">
-      <Project>{520013A7-7182-417C-09B6-C098A80CAC3A}</Project>
+      <Project>{a7130052-8271-7c41-09b6-c098a80cac3a}</Project>
       <Name>Ninja.WebSockets</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEditor.UI.csproj">
+      <Project>{43200c67-4849-806c-0ffd-014346aed598}</Project>
+      <Name>UnityEditor.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEngine.UI.csproj">
+      <Project>{021918df-6724-cef6-b75a-9497e817028e}</Project>
+      <Name>UnityEngine.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
