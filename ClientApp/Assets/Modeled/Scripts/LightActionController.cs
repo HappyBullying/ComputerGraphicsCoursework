@@ -12,17 +12,6 @@ public class LightActionController : MonoBehaviour, IActionAble
     private LightControllScipt lc;
 
 
-void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            DoAction();
-        }
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            UnDoAction();
-        }
-    }
 
     public void DoAction()
     {

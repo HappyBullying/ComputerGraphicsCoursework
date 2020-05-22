@@ -6,6 +6,7 @@ TagManager:
   tags:
   - LightSwitch
   - ActionAbleObject
+  - Clue
   layers:
   - Default
   - TransparentFX
