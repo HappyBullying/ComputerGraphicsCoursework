@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Mirror;
 public class AnimController : MonoBehaviour, IActionAble
 {
     public Animation _animation;
@@ -15,8 +14,6 @@ public class AnimController : MonoBehaviour, IActionAble
             i++;
         }
     }
-
-
     // Unterface methods
     /***************************************************/
     public void DoAction()
@@ -41,7 +38,6 @@ public class AnimController : MonoBehaviour, IActionAble
     {
         return isDefaultState;
     }
-
     public bool CanExecuteAction()
     {
         return !_animation.isPlaying;

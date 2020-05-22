@@ -54,7 +54,10 @@
      <Compile Include="Assets\Modeled\Scripts\ActionRefferer.cs" />
      <Compile Include="Assets\Modeled\Scripts\AnimController.cs" />
      <Compile Include="Assets\Modeled\Scripts\BaseClueTextHolder.cs" />
+     <Compile Include="Assets\Modeled\Scripts\CanvasAction.cs" />
+     <Compile Include="Assets\Modeled\Scripts\CanvasClueTextHolder.cs" />
      <Compile Include="Assets\Modeled\Scripts\ChildrenRefferer.cs" />
+     <Compile Include="Assets\Modeled\Scripts\ClueSizeScript.cs" />
      <Compile Include="Assets\Modeled\Scripts\DoorClueTextHolder.cs" />
      <Compile Include="Assets\Modeled\Scripts\FridgeClueTextHolder.cs" />
      <Compile Include="Assets\Modeled\Scripts\LightActionController.cs" />

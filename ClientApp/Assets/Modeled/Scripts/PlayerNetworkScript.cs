@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
-using System.Text;
 using UnityEngine.UI;
 using System.Linq;
 
@@ -111,7 +110,6 @@ public class PlayerNetworkScript : NetworkBehaviour
         }
 
     }
-
 
 
     [Command]
