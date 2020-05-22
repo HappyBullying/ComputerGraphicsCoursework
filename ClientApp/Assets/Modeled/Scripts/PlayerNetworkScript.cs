@@ -1,16 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using System.Text;
 
 public class PlayerNetworkScript : NetworkBehaviour
 {
-    private const float castingRadius = 0.5f;
-    private const float castingDistance = 2f;
-    private SortedList<string, IActionAble> ACTCOLL = new SortedList<string, IActionAble>();
-
-    void Update()
-    {
+    private const float castingRadius = 0.55f;
+    private const float castingDistance = 3f;
+    private bool Synchronized = false;
+    private SortedList<string, IActionAble> InteractedObjects = new SortedList<string, IActionAble>();
+    
+    private void Update()
+    {   
         CastForActionAbleOjects();
     }
     private void CastForActionAbleOjects()
@@ -27,29 +28,41 @@ public class PlayerNetworkScript : NetworkBehaviour
                 {
                     ActionRefferer aR = sphereHit.transform.gameObject.GetComponent<ActionRefferer>();
                     CmdInteract(aR.ParentGameObject.name);
-                    
                 }
-                
             }
 
-        }
 
+            if (sphereHit.transform.gameObject.tag == "ClueAble")
+            {
+
+            }
+        }
+    }
+
+
+    IActionAble FindAAObject(string gmoName)
+    {
+        IActionAble obj = null;
+        if (!InteractedObjects.ContainsKey(gmoName))
+        {
+            obj = GameObject.Find(gmoName).GetComponent<ActionRefferer>().ParentActionComponent;
+            InteractedObjects.Add(gmoName, obj);
+        }
+        else
+        {
+            obj = InteractedObjects[gmoName];
+        }
+        return obj;
     }
 
 
     private void Interact(string gmoName)
     {
-        IActionAble obj = null;
-        if (!ACTCOLL.ContainsKey(gmoName))
-        {
-            obj = GameObject.Find(gmoName).GetComponent<ActionRefferer>().ParentActionComponent;
-            ACTCOLL.Add(gmoName, obj);
-        }
-        else
-        {
-            obj = ACTCOLL[gmoName];
-        }
+        IActionAble obj = FindAAObject(gmoName);
         
+        if (!obj.CanExecuteAction())
+            return;
+
         if (obj.IsDefaultState())
         {
             obj.DoAction();
@@ -61,12 +74,15 @@ public class PlayerNetworkScript : NetworkBehaviour
 
     }
 
+
+
     [Command]
     private void CmdInteract(string gmoName)
     {
-        Debug.Log("Cmd");
         if (isServer)
+        {
             Interact(gmoName);
+        }
         RpcInteract(gmoName);
     }
 
@@ -74,8 +90,9 @@ public class PlayerNetworkScript : NetworkBehaviour
     [ClientRpc]
     private void RpcInteract(string gmoName)
     {
-        Debug.Log("Rpc");
         if (isClientOnly)
+        {
             Interact(gmoName);
+        }
     }
 }

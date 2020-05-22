@@ -41,5 +41,10 @@ public class AnimController : MonoBehaviour, IActionAble
     {
         return isDefaultState;
     }
+
+    public bool CanExecuteAction()
+    {
+        return !_animation.isPlaying;
+    }
     /***************************************************/
 }

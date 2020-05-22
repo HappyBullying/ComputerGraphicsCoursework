@@ -582,6 +582,7 @@ PlayerSettings:
   scriptingDefineSymbols:
     1: MIRROR;MIRROR_1726_OR_NEWER;MIRROR_3_0_OR_NEWER;MIRROR_3_12_OR_NEWER;MIRROR_4_0_OR_NEWER;MIRROR_5_0_OR_NEWER;MIRROR_6_0_OR_NEWER;MIRROR_7_0_OR_NEWER;MIRROR_8_0_OR_NEWER;MIRROR_9_0_OR_NEWER;MIRROR_10_0_OR_NEWER
     13: MIRROR;MIRROR_1726_OR_NEWER;MIRROR_3_0_OR_NEWER;MIRROR_3_12_OR_NEWER;MIRROR_4_0_OR_NEWER;MIRROR_5_0_OR_NEWER;MIRROR_6_0_OR_NEWER;MIRROR_7_0_OR_NEWER;MIRROR_8_0_OR_NEWER;MIRROR_9_0_OR_NEWER;MIRROR_10_0_OR_NEWER
+    14: MIRROR;MIRROR_1726_OR_NEWER;MIRROR_3_0_OR_NEWER;MIRROR_3_12_OR_NEWER;MIRROR_4_0_OR_NEWER;MIRROR_5_0_OR_NEWER;MIRROR_6_0_OR_NEWER;MIRROR_7_0_OR_NEWER;MIRROR_8_0_OR_NEWER;MIRROR_9_0_OR_NEWER;MIRROR_10_0_OR_NEWER
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}
@@ -595,8 +596,8 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Template_3D
-  metroPackageVersion: 
+  metroPackageName: Template3D
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -617,8 +618,54 @@ PlayerSettings:
   metroSplashScreenBackgroundColor: {r: 0.12941177, g: 0.17254902, b: 0.21568628,
     a: 1}
   metroSplashScreenUseBackgroundColor: 0
-  platformCapabilities: {}
-  metroTargetDeviceFamilies: {}
+  platformCapabilities:
+    WindowsStoreApps:
+      AllJoyn: False
+      Appointments: False
+      BackgroundMediaPlayback: False
+      BlockedChatMessages: False
+      Bluetooth: False
+      Chat: False
+      CodeGeneration: False
+      Contacts: False
+      EnterpriseAuthentication: False
+      GazeInput: False
+      HumanInterfaceDevice: False
+      InputInjectionBrokered: False
+      InternetClient: True
+      InternetClientServer: True
+      Location: False
+      LowLevelDevices: False
+      Microphone: False
+      MusicLibrary: False
+      Objects3D: False
+      OfflineMapsManagement: False
+      PhoneCall: False
+      PhoneCallHistoryPublic: False
+      PicturesLibrary: False
+      PointOfService: False
+      PrivateNetworkClientServer: True
+      Proximity: False
+      RecordedCallsFolder: False
+      RemoteSystem: False
+      RemovableStorage: False
+      SharedUserCertificates: False
+      SpatialPerception: False
+      SystemManagement: False
+      UserAccountInformation: False
+      UserDataTasks: False
+      UserNotificationListener: False
+      VideosLibrary: False
+      VoipCall: False
+      WebCam: False
+  metroTargetDeviceFamilies:
+    Desktop: False
+    Holographic: False
+    IoT: False
+    IoTHeadless: False
+    Mobile: False
+    Team: False
+    Xbox: False
   metroFTAName: 
   metroFTAFileTypes: []
   metroProtocolName: 

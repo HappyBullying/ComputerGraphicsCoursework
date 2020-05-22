@@ -69,4 +69,6 @@ void Update()
     {
         return isDefaultState;
     }
+
+    public bool CanExecuteAction() => true;
 }

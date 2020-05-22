@@ -3,4 +3,6 @@
     void DoAction();
     void UnDoAction();
     bool IsDefaultState();
+
+    bool CanExecuteAction();
 }
