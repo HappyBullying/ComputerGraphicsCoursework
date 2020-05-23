@@ -64,6 +64,8 @@
      <Compile Include="Assets\Modeled\Scripts\LightClueTextHolder.cs" />
      <Compile Include="Assets\Modeled\Scripts\PlayerNetworkScript.cs" />
      <Compile Include="Assets\Modeled\Scripts\PropellerScript.cs" />
+     <Compile Include="Assets\Modeled\Scripts\TelephoneActionController.cs" />
+     <Compile Include="Assets\Modeled\Scripts\TelephoneClueTextHolder.cs" />
      <Compile Include="Assets\Modeled\Scripts\WardrobeClueTextHolder.cs" />
      <Compile Include="Assets\Modeled\Scripts\WindowClueTextHolder.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />

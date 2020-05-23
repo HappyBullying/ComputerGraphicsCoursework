@@ -32,7 +32,7 @@ public class PlayerNetworkScript : NetworkBehaviour
     {
         RaycastHit sphereHit;
         Ray ray = Camera.main.ScreenPointToRay(
-            new Vector3(Camera.main.pixelWidth / 2f, Camera.main.pixelHeight / 2f, 0f));
+            Input.mousePosition);
 
         if (Physics.SphereCast(ray, castingRadius, out sphereHit, castingDistance))
         {
